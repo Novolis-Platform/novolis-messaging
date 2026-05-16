@@ -1,0 +1,14 @@
+{
+  "packages": {
+    "Novolis.Messaging": {
+      "paths": [
+        "src/Novolis.Messaging/**",
+        "tests/**",
+        "Directory.Build.props",
+        "Directory.Packages.props",
+        "global.json"
+      ],
+      "project": "src/Novolis.Messaging/Novolis.Messaging.csproj"
+    }
+  }
+}
