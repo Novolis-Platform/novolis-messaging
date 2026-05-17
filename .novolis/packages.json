@@ -1,14 +1,27 @@
 {
   "packages": {
-    "Novolis.Messaging": {
+    "Novolis.Messaging.Channels": {
+      "project": "src/Novolis.Messaging.Channels/Novolis.Messaging.Channels.csproj",
       "paths": [
-        "src/Novolis.Messaging/**",
-        "tests/**",
+        "src/Novolis.Messaging.Channels/**",
+        "tests/Novolis.Messaging.Channels.Tests/**",
         "Directory.Build.props",
         "Directory.Packages.props",
-        "global.json"
-      ],
-      "project": "src/Novolis.Messaging/Novolis.Messaging.csproj"
+        "global.json",
+        "Novolis.Messaging.slnx"
+      ]
+    },
+    "Novolis.Messaging": {
+      "project": "src/Novolis.Messaging/Novolis.Messaging.csproj",
+      "paths": [
+        "src/Novolis.Messaging/**",
+        "src/Novolis.Messaging.Channels/**",
+        "tests/Novolis.Messaging.Tests/**",
+        "Directory.Build.props",
+        "Directory.Packages.props",
+        "global.json",
+        "Novolis.Messaging.slnx"
+      ]
     }
   }
 }

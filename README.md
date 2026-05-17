@@ -1,21 +1,29 @@
 # Messaging
 
-## What it is
+In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI) and **PulseFlow** (`Novolis.Messaging`).
 
-Messaging in the Novolis ecosystem.
+## Packages
 
-## Current status
-
-This repository is reserved for the Novolis Messaging package.
-Implementation will be migrated or built in later steps.
+| Package | Description |
+|---------|-------------|
+| `Novolis.Messaging.Channels` | Register bounded/unbounded channels in `IServiceCollection` |
+| `Novolis.Messaging` | Pulse/conduit/flow pipeline (migrated from Frank.PulseFlow) |
 
 ## Install
 
-Not yet published.
+```bash
+dotnet add package Novolis.Messaging.Channels --version 0.1.0-preview.1
+dotnet add package Novolis.Messaging --version 0.1.0-preview.1
+```
+
+Preview builds publish from this repo after NuGet trusted publishing is configured ([release](docs/release.md)).
 
 ## Quick start
 
-Not yet available.
+```csharp
+services.AddChannel<MyEvent>();
+services.AddPulseFlow<MyFlow>();
+```
 
 ## Documentation
 
@@ -26,7 +34,3 @@ Not yet available.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Security
-
-See [SECURITY.md](SECURITY.md).

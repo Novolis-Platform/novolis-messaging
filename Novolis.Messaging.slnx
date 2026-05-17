@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Novolis.Messaging.Channels/Novolis.Messaging.Channels.csproj" />
+    <Project Path="src/Novolis.Messaging/Novolis.Messaging.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Novolis.Messaging.Channels.Tests/Novolis.Messaging.Channels.Tests.csproj" />
+    <Project Path="tests/Novolis.Messaging.Tests/Novolis.Messaging.Tests.csproj" />
+  </Folder>
+</Solution>
