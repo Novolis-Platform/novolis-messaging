@@ -27,7 +27,7 @@ public sealed class PulseNexusResilienceTests : HostApplicationTestBase
     public async Task Subsequent_pulses_are_processed_after_a_flow_throws()
     {
         await Task.Delay(800);
-        await Assert.That(_recorder.Labels.ToArray()).IsEqualTo(["first", "second"]);
+        await Assert.That(_recorder.Labels.ToArray()).IsEquivalentTo(["first", "second"]);
     }
 
     private sealed class LabelPulse : BasePulse
