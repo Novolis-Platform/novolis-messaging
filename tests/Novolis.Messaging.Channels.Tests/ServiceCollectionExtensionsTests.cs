@@ -1,8 +1,8 @@
 using System.Threading.Channels;
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Novolis.Testing.TestBases;
+using TUnit.Core;
 
 namespace Novolis.Messaging.Channels.Tests;
 
@@ -28,7 +28,7 @@ public class ServiceCollectionExtensionsTests : HostApplicationTestBase
             await channel.WriteAsync(myDto);
 
         await Task.Delay(100);
-        _dtos.Should().Contain(myDto);
+        await Assert.That(_dtos.Contains(myDto)).IsTrue();
         TestContext.Current?.OutputWriter.WriteLine($"_dtos.Count: {_dtos.Count}");
     }
 

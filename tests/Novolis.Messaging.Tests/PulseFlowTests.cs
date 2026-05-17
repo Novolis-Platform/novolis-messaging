@@ -1,10 +1,10 @@
 using System.Diagnostics;
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Novolis.Testing.TUnit;
 using Novolis.Testing.TestBases;
+using TUnit.Core;
 
 namespace Novolis.Messaging.Tests;
 
@@ -50,10 +50,10 @@ public class PulseFlowTests : HostApplicationTestBase
 
         await Task.Delay(500);
 
-        _container.BlueMessages.Should().NotBeEmpty();
-        _container.RedMessages.Should().NotBeEmpty();
-        _container.TimerPulses.Should().NotBeEmpty();
-        _container.TimerPulses2.Should().NotBeEmpty();
+        await Assert.That(_container.BlueMessages).IsNotEmpty();
+        await Assert.That(_container.RedMessages).IsNotEmpty();
+        await Assert.That(_container.TimerPulses).IsNotEmpty();
+        await Assert.That(_container.TimerPulses2).IsNotEmpty();
     }
 
     private class BlueOutputFlow(TestPulseContainer container) : IFlow

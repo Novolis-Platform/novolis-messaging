@@ -1,20 +1,20 @@
-using FluentAssertions;
 using Novolis.Messaging;
 using Novolis.Messaging.Internal;
+using TUnit.Core;
 
 namespace Novolis.Messaging.Tests;
 
 public sealed class GenericFlowTests
 {
     [Test]
-    public void CanHandle_matches_exact_runtime_type_only()
+    public async Task CanHandle_matches_exact_runtime_type_only()
     {
         var handler = new EchoHandler();
         var flow = new GenericFlow<TestPulse, EchoHandler>(handler);
 
-        flow.CanHandle(typeof(TestPulse)).Should().BeTrue();
-        flow.CanHandle(typeof(DerivedPulse)).Should().BeFalse();
-        flow.CanHandle(typeof(object)).Should().BeFalse();
+        await Assert.That(flow.CanHandle(typeof(TestPulse))).IsTrue();
+        await Assert.That(flow.CanHandle(typeof(DerivedPulse))).IsFalse();
+        await Assert.That(flow.CanHandle(typeof(object))).IsFalse();
     }
 
     [Test]
@@ -26,7 +26,7 @@ public sealed class GenericFlowTests
 
         await flow.HandleAsync(pulse, CancellationToken.None);
 
-        handler.Last.Should().BeSameAs(pulse);
+        await Assert.That(ReferenceEquals(handler.Last, pulse)).IsTrue();
     }
 
     [Test]
@@ -35,8 +35,9 @@ public sealed class GenericFlowTests
         var handler = new EchoHandler();
         var flow = new GenericFlow<TestPulse, EchoHandler>(handler);
 
-        await Assert.ThrowsAsync<IncompatibleFlowException>(async () =>
-            await flow.HandleAsync(new OtherPulse(), CancellationToken.None));
+        await Assert.That(async () =>
+            await flow.HandleAsync(new OtherPulse(), CancellationToken.None))
+            .Throws<IncompatibleFlowException>();
     }
 
     private class TestPulse : BasePulse

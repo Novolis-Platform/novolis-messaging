@@ -1,8 +1,8 @@
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Novolis.Testing.TestBases;
+using TUnit.Core;
 
 namespace Novolis.Messaging.Tests;
 
@@ -27,7 +27,7 @@ public sealed class PulseNexusResilienceTests : HostApplicationTestBase
     public async Task Subsequent_pulses_are_processed_after_a_flow_throws()
     {
         await Task.Delay(800);
-        _recorder.Labels.Should().Equal("first", "second");
+        await Assert.That(_recorder.Labels.ToArray()).IsEqualTo(["first", "second"]);
     }
 
     private sealed class LabelPulse : BasePulse

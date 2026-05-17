@@ -1,7 +1,8 @@
-using FluentAssertions;
 using Novolis.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TUnit.Core;
+
 namespace Novolis.Messaging.Tests;
 
 /// <summary>
@@ -32,9 +33,9 @@ public sealed class PulseFlowDiagnosticsTests
             await host.StopAsync();
         }
 
-        unmatched.Should().ContainSingle();
-        unmatched[0].Pulse.Should().BeOfType<OrphanPulse>();
-        unmatched[0].PulseType.Should().Be(typeof(OrphanPulse));
+        await Assert.That(unmatched.Count).IsEqualTo(1);
+        await Assert.That(unmatched[0].Pulse).IsTypeOf<OrphanPulse>();
+        await Assert.That(unmatched[0].PulseType).IsEqualTo(typeof(OrphanPulse));
     }
 
     [Test]
@@ -60,11 +61,11 @@ public sealed class PulseFlowDiagnosticsTests
             await host.StopAsync();
         }
 
-        faults.Should().ContainSingle();
-        faults[0].FlowType.Should().Be(typeof(ThrowingFlow));
-        faults[0].Pulse.Should().BeOfType<FaultPulse>();
-        faults[0].Exception.Should().BeOfType<InvalidOperationException>()
-            .Which.Message.Should().Be("Simulated fault");
+        await Assert.That(faults.Count).IsEqualTo(1);
+        await Assert.That(faults[0].FlowType).IsEqualTo(typeof(ThrowingFlow));
+        await Assert.That(faults[0].Pulse).IsTypeOf<FaultPulse>();
+        await Assert.That(faults[0].Exception).IsTypeOf<InvalidOperationException>();
+        await Assert.That(faults[0].Exception!.Message).IsEqualTo("Simulated fault");
     }
 
     [Test]
@@ -88,7 +89,7 @@ public sealed class PulseFlowDiagnosticsTests
             await host.StopAsync();
         }
 
-        handled.Should().ContainSingle();
+        await Assert.That(handled.Count).IsEqualTo(1);
     }
 
     private sealed class OrphanPulse : BasePulse;
