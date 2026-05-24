@@ -3,6 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Novolis.Messaging.Channels;
 
+/// <summary>
+/// Registers <see cref="System.Threading.Channels.Channel{T}"/> instances with DI.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>
