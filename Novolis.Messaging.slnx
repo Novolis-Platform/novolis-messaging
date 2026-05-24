@@ -4,7 +4,6 @@
     <Project Path="src/Novolis.Messaging/Novolis.Messaging.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/Novolis.Messaging.Channels.Tests/Novolis.Messaging.Channels.Tests.csproj" />
-    <Project Path="tests/Novolis.Messaging.Tests/Novolis.Messaging.Tests.csproj" />
-  </Folder>
+    <Project Path="tests/Novolis.Messaging.Unit/Novolis.Messaging.Unit.csproj" />
+    </Folder>
 </Solution>

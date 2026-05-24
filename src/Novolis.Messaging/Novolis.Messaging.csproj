@@ -5,6 +5,7 @@
     <IsPackable>true</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="Novolis.Messaging.Unit" />
     <InternalsVisibleTo Include="Novolis.Messaging.Tests" />
     <ProjectReference Include="..\Novolis.Messaging.Channels\Novolis.Messaging.Channels.csproj" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />

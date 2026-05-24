@@ -4,7 +4,7 @@
       "project": "src/Novolis.Messaging.Channels/Novolis.Messaging.Channels.csproj",
       "paths": [
         "src/Novolis.Messaging.Channels/**",
-        "tests/Novolis.Messaging.Channels.Tests/**",
+        "tests/Novolis.Messaging.Unit/Channels/**",
         "Directory.Build.props",
         "Directory.Packages.props",
         "global.json",
@@ -16,7 +16,7 @@
       "paths": [
         "src/Novolis.Messaging/**",
         "src/Novolis.Messaging.Channels/**",
-        "tests/Novolis.Messaging.Tests/**",
+        "tests/Novolis.Messaging.Unit/Messaging/**",
         "Directory.Build.props",
         "Directory.Packages.props",
         "global.json",
