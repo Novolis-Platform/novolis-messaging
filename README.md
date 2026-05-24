@@ -1,3 +1,18 @@
+<!-- novolis-package-index:start -->
+> **GitHub Packages shows this repository README on every package page** (upstream limitation).
+> Open the **package README** for install and quick start — embedded in each .nupkg and linked below.
+
+## Published packages
+
+| Package | Install | Package README |
+|---------|---------|----------------|
+| `Novolis.Messaging` | `dotnet add package Novolis.Messaging` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging/README.md) |
+| `Novolis.Messaging.Channels` | `dotnet add package Novolis.Messaging.Channels` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Channels/README.md) |
+
+For NuGet.org and Visual Studio, the **embedded** README.md inside each package is authoritative.
+
+<!-- novolis-package-index:end -->
+
 # Messaging
 
 In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI) and **PulseFlow** (`Novolis.Messaging`).
@@ -34,3 +49,4 @@ services.AddPulseFlow<MyFlow>();
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
