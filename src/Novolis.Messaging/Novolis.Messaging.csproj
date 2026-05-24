@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>Novolis.Messaging</PackageId>
-    <Version>0.1.0-preview.1</Version>
-    <Description>In-process pulse messaging (PulseFlow) over channels with DI.</Description>
+<Description>In-process pulse messaging (PulseFlow) over channels with DI.</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
   <ItemGroup>
@@ -12,4 +11,3 @@
     <PackageReference Include="Microsoft.Extensions.Options" />
   </ItemGroup>
 </Project>
-
