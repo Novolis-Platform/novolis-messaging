@@ -2,13 +2,10 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <RootNamespace>Novolis.Messaging.Channels.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Novolis.Testing.TestBases" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="TUnit" />
     <ProjectReference Include="..\..\src\Novolis.Messaging.Channels\Novolis.Messaging.Channels.csproj" />
-    
+    <ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj" />
   </ItemGroup>
 </Project>

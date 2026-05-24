@@ -5,12 +5,10 @@
     <RootNamespace>Novolis.Messaging.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Novolis.Testing.TestBases" />
-    <PackageReference Include="Novolis.Testing.TUnit" />
     <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="TUnit" />
     <ProjectReference Include="..\..\src\Novolis.Messaging\Novolis.Messaging.csproj" />
-    
-    
+    <ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj" />
+    <ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.TUnit\Novolis.Testing.TUnit.csproj" />
   </ItemGroup>
 </Project>
