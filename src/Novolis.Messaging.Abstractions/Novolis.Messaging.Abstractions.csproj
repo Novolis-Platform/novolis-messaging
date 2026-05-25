@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Messaging.Abstractions</PackageId>
+    <Description>Message contracts above channels (Frank.Messaging.Abstractions migration).</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Messaging</RootNamespace>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Messaging.Coordination.Abstractions</PackageId>
+    <Description>Distributed host coordination ports (presence, tick leadership, token denylist, rate limits).</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Messaging.Coordination.Abstractions</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+  </ItemGroup>
+</Project>

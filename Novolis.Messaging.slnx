@@ -1,7 +1,11 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Novolis.Messaging.Abstractions/Novolis.Messaging.Abstractions.csproj" />
     <Project Path="src/Novolis.Messaging.Channels/Novolis.Messaging.Channels.csproj" />
     <Project Path="src/Novolis.Messaging/Novolis.Messaging.csproj" />
+    <Project Path="src/Novolis.Messaging.Coordination.Abstractions/Novolis.Messaging.Coordination.Abstractions.csproj" />
+    <Project Path="src/Novolis.Messaging.Coordination.InMemory/Novolis.Messaging.Coordination.InMemory.csproj" />
+    <Project Path="src/Novolis.Messaging.Coordination.Redis/Novolis.Messaging.Coordination.Redis.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Novolis.Messaging.Unit/Novolis.Messaging.Unit.csproj" />
