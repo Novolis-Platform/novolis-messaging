@@ -1,13 +1,14 @@
 {
   "packages": {
+    "Novolis.Messaging.Abstractions": {
+      "project": "src/Novolis.Messaging.Abstractions/Novolis.Messaging.Abstractions.csproj",
+      "paths": ["src/Novolis.Messaging.Abstractions/**", "Novolis.Messaging.slnx"]
+    },
     "Novolis.Messaging.Channels": {
       "project": "src/Novolis.Messaging.Channels/Novolis.Messaging.Channels.csproj",
       "paths": [
         "src/Novolis.Messaging.Channels/**",
         "tests/Novolis.Messaging.Unit/Channels/**",
-        "Directory.Build.props",
-        "Directory.Packages.props",
-        "global.json",
         "Novolis.Messaging.slnx"
       ]
     },
@@ -17,10 +18,25 @@
         "src/Novolis.Messaging/**",
         "src/Novolis.Messaging.Channels/**",
         "tests/Novolis.Messaging.Unit/Messaging/**",
-        "Directory.Build.props",
-        "Directory.Packages.props",
-        "global.json",
         "Novolis.Messaging.slnx"
+      ]
+    },
+    "Novolis.Messaging.Coordination.Abstractions": {
+      "project": "src/Novolis.Messaging.Coordination.Abstractions/Novolis.Messaging.Coordination.Abstractions.csproj",
+      "paths": ["src/Novolis.Messaging.Coordination.Abstractions/**", "Novolis.Messaging.slnx"]
+    },
+    "Novolis.Messaging.Coordination.InMemory": {
+      "project": "src/Novolis.Messaging.Coordination.InMemory/Novolis.Messaging.Coordination.InMemory.csproj",
+      "paths": [
+        "src/Novolis.Messaging.Coordination.InMemory/**",
+        "src/Novolis.Messaging.Coordination.Abstractions/**"
+      ]
+    },
+    "Novolis.Messaging.Coordination.Redis": {
+      "project": "src/Novolis.Messaging.Coordination.Redis/Novolis.Messaging.Coordination.Redis.csproj",
+      "paths": [
+        "src/Novolis.Messaging.Coordination.Redis/**",
+        "src/Novolis.Messaging.Coordination.Abstractions/**"
       ]
     }
   }
