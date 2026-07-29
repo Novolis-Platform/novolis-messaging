@@ -8,10 +8,14 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="Novolis.Testing.TestBases" />
     <PackageReference Include="Novolis.Testing.TUnit" />
+    <PackageReference Include="ConsoleTableExt" />
     <PackageReference Include="TUnit" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Novolis.Messaging.Channels/Novolis.Messaging.Channels.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging/Novolis.Messaging.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.Abstractions/Novolis.Messaging.Abstractions.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.Coordination.Abstractions/Novolis.Messaging.Coordination.Abstractions.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.Coordination.InMemory/Novolis.Messaging.Coordination.InMemory.csproj" />
   </ItemGroup>
 </Project>
