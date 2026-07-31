@@ -6,8 +6,12 @@
 
 | Package | Install | Package README |
 |---------|---------|----------------|
-| `Novolis.Messaging` | `dotnet add package Novolis.Messaging` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging/README.md) |
+| `Novolis.Messaging.Abstractions` | `dotnet add package Novolis.Messaging.Abstractions` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Abstractions/README.md) |
 | `Novolis.Messaging.Channels` | `dotnet add package Novolis.Messaging.Channels` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Channels/README.md) |
+| `Novolis.Messaging` | `dotnet add package Novolis.Messaging` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging/README.md) |
+| `Novolis.Messaging.Coordination.Abstractions` | `dotnet add package Novolis.Messaging.Coordination.Abstractions` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Coordination.Abstractions/README.md) |
+| `Novolis.Messaging.Coordination.InMemory` | `dotnet add package Novolis.Messaging.Coordination.InMemory` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Coordination.InMemory/README.md) |
+| `Novolis.Messaging.Coordination.Redis` | `dotnet add package Novolis.Messaging.Coordination.Redis` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Coordination.Redis/README.md) |
 
 For NuGet.org and Visual Studio, the **embedded** README.md inside each package is authoritative.
 
@@ -15,7 +19,7 @@ For NuGet.org and Visual Studio, the **embedded** README.md inside each package 
 
 # Messaging
 
-In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI) and **PulseFlow** (`Novolis.Messaging`).
+In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI), **PulseFlow** (`Novolis.Messaging`), typed pub/sub contracts, and multi-instance **coordination** ports (InMemory / Redis).
 
 ## Packages
 
@@ -23,21 +27,17 @@ In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI) a
 |---------|-------------|
 | `Novolis.Messaging.Channels` | Register bounded/unbounded channels in `IServiceCollection` |
 | `Novolis.Messaging` | Pulse/conduit/flow pipeline (migrated from Frank.PulseFlow) |
-
-## Install
-
-```bash
-dotnet add package Novolis.Messaging.Channels --version 0.1.0-preview.1
-dotnet add package Novolis.Messaging --version 0.1.0-preview.1
-```
-
-Preview builds publish from this repo after NuGet trusted publishing is configured ([release](docs/release.md)).
+| `Novolis.Messaging.Abstractions` | `Message<T>`, publisher/subscriber contracts |
+| `Novolis.Messaging.Coordination.Abstractions` | Presence, tick leadership, JWT denylist, rate limit ports |
+| `Novolis.Messaging.Coordination.InMemory` | Single-process coordination for dev/tests |
+| `Novolis.Messaging.Coordination.Redis` | Redis/Garnet-backed coordination |
 
 ## Quick start
 
 ```csharp
 services.AddChannel<MyEvent>();
-services.AddPulseFlow<MyFlow>();
+services.AddPulseFlow<TimerPulse, TimerHandler>();
+services.AddInMemoryCoordination();
 ```
 
 ## Documentation
@@ -49,4 +49,3 @@ services.AddPulseFlow<MyFlow>();
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
-

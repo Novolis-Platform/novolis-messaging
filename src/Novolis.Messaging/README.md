@@ -1,6 +1,6 @@
 # Novolis.Messaging
 
-Pulse-based in-process messaging with composable flows and handlers.
+Pulse-based in-process messaging (PulseFlow): pulses are written to a `Channel<IPulse>`, consumed by `PulseNexus` (`BackgroundService`), and dispatched to registered `IFlow` instances.
 
 ## Install
 
@@ -10,20 +10,64 @@ dotnet add package Novolis.Messaging
 
 **Prerequisites:** [.NET 10 SDK](https://dotnet.microsoft.com/download) (`net10.0`).
 
-## Quick start
+Depends on `Novolis.Messaging.Channels`.
+
+## Quick start — handler flow
 
 ```csharp
-services.AddPulseMessaging(builder =>
+using Novolis.Messaging;
+
+public sealed record TimerPulse(string Label) : BasePulse;
+
+public sealed class TimerHandler : IPulseHandler<TimerPulse>
 {
-    builder.AddFlow<MyPulse, MyHandler>();
-});
+    public Task HandleAsync(TimerPulse pulse, CancellationToken cancellationToken)
+        => Task.CompletedTask;
+}
+
+services.AddPulseFlow<TimerPulse, TimerHandler>();
 ```
 
-## Related packages
+## Quick start — custom flow
 
-| Package | When to use |
-|---------|-------------|
-| `Novolis.Messaging.Channels` | Low-level channel registration (dependency) |
+```csharp
+public sealed class MyFlow : IFlow
+{
+    public bool CanHandle(Type pulseType) => pulseType == typeof(MyPulse);
+    public Task HandleAsync(IPulse pulse, CancellationToken cancellationToken) => Task.CompletedTask;
+}
+
+services.AddPulseFlow(builder => builder.AddFlow<MyFlow>());
+// shorthand: services.AddPulseFlow<MyFlow>();
+```
+
+Send pulses from any service:
+
+```csharp
+await conduit.SendAsync(new TimerPulse("tick"), cancellationToken);
+```
+
+Multiple handlers for the same pulse type are supported (`AddPulseFlow<TPulse, THandler2>()`). Unmatched pulses and flow faults can be observed via `ConfigurePulseFlowDiagnostics`.
+
+## API
+
+| Type | Role |
+|------|------|
+| `IPulse` / `BasePulse` | Pulse identity (`Id`, `Created`) |
+| `IPulseHandler<T>` | Typed handler for a pulse |
+| `IFlow` | Multi-pulse dispatcher (`CanHandle`, `HandleAsync`) |
+| `IFlowBuilder` | `AddFlow<T>()` during registration |
+| `IConduit` | `SendAsync(IPulse, CancellationToken)` |
+| `ServiceCollectionExtensions.AddPulseFlow` | Register flows + hosted `PulseNexus` |
+| `ConfigurePulseFlowDiagnostics` | Unmatched/fault callbacks |
+| `IncompatibleFlowException` | Thrown on pulse type mismatch in a flow |
+
+## Related
+
+| Package | Role |
+|---------|------|
+| `Novolis.Messaging.Channels` | `Channel<T>` DI registration |
+| `Novolis.Messaging.Abstractions` | Typed pub/sub envelope (separate model) |
 
 ## More documentation
 

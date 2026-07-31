@@ -1,6 +1,6 @@
 # Novolis.Messaging.Channels
 
-Registers `System.Threading.Channels` with dependency injection for producer/consumer patterns.
+Registers `System.Threading.Channels.Channel<T>` (plus reader/writer) in dependency injection for producer/consumer patterns.
 
 ## Install
 
@@ -13,14 +13,54 @@ dotnet add package Novolis.Messaging.Channels
 ## Quick start
 
 ```csharp
+using Novolis.Messaging.Channels;
+
 services.AddChannel<MyMessage>();
+
+// Producer: inject ChannelWriter<MyMessage>
+// Consumer: inject ChannelReader<MyMessage> (e.g. in a BackgroundService)
 ```
 
-## Related packages
+Bounded channel with custom settings:
 
-| Package | When to use |
-|---------|-------------|
-| `Novolis.Messaging` | Pulse/flow messaging on top of channels |
+```csharp
+services.AddChannel<DevicePacket>(
+    ChannelType.Bounded,
+    new ChannelSettings
+    {
+        BoundedCapacity = 256,
+        BoundedFullMode = BoundedChannelFullMode.Wait,
+        SingleReader = true,
+        SingleWriter = false,
+    });
+```
+
+Wire `ChannelMessagePublisher<T>` to `IMessagePublisher<T>` manually if needed:
+
+```csharp
+services.AddSingleton<IMessagePublisher<MyMessage>, ChannelMessagePublisher<MyMessage>>();
+```
+
+Constraint: `T` must be a reference type (`where T : class`).
+
+## API
+
+| Type | Role |
+|------|------|
+| `ServiceCollectionExtensions.AddChannel<T>` | Unbounded, bounded, or custom settings overloads |
+| `ChannelType` | `Unbounded`, `Bounded` |
+| `ChannelSettings` | `SingleReader`, `SingleWriter`, `BoundedCapacity`, `BoundedFullMode` |
+| `ChannelMessagePublisher<T>` | `IMessagePublisher<T>` adapter over `ChannelWriter<Message<T>>` |
+
+Each registration adds singleton `Channel<T>`, `ChannelReader<T>`, and `ChannelWriter<T>`.
+
+## Related
+
+| Package | Role |
+|---------|------|
+| `Novolis.Messaging` | PulseFlow pipeline on top of `Channel<IPulse>` |
+| `Novolis.Messaging.Abstractions` | `Message<T>`, `IMessagePublisher<T>` |
+| `Novolis.Transports.WireFish` | Publishes captured packets via channels |
 
 ## More documentation
 

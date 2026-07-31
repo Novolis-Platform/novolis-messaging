@@ -1,6 +1,6 @@
 # Novolis.Messaging.Coordination.Redis
 
-Redis/Garnet-backed coordination with configurable key prefix.
+StackExchange.Redis-backed coordination (Garnet/Redis-compatible) with configurable key prefix. Implements session presence, tick leadership, JWT denylist, and rate limiting.
 
 ## Install
 
@@ -8,9 +8,53 @@ Redis/Garnet-backed coordination with configurable key prefix.
 dotnet add package Novolis.Messaging.Coordination.Redis
 ```
 
+**Prerequisite:** `IConnectionMultiplexer` must already be registered (e.g. Aspire `AddRedisClient("garnet")`).
+
 ## Quick start
 
 ```csharp
-// IConnectionMultiplexer must already be registered (e.g. Aspire AddRedisClient).
+using Microsoft.Extensions.DependencyInjection;
+using Novolis.Messaging.Coordination.Abstractions;
+using Novolis.Messaging.Coordination.Redis;
+using StackExchange.Redis;
+
+services.Configure<CoordinationHostingOptions>(
+    configuration.GetSection(CoordinationHostingOptions.SectionName));
+
+services.AddSingleton<IConnectionMultiplexer>(_ =>
+    ConnectionMultiplexer.Connect(configuration.GetConnectionString("garnet")!));
+
 services.AddRedisCoordinationImplementations();
+// alias: AddGarnetCoordinationImplementations()
 ```
+
+Optional health check (register separately):
+
+```csharp
+services.AddHealthChecks().AddCheck<RedisCoordinationHealthCheck>("redis-coordination");
+```
+
+Key layout (prefix from `CoordinationHostingOptions.KeyPrefix`, default `scr:`):
+
+- Presence: `{prefix}prt:{sessionTicks}:{connHash}`
+- Tick leader: `{prefix}sim:tick-leader`
+- JWT deny: `{prefix}auth:deny:jti:{hash}`
+- Rate limit: `{prefix}rl:{hash}`
+
+## API
+
+| Type | Role |
+|------|------|
+| `RedisCoordinationServiceCollectionExtensions.AddRedisCoordinationImplementations` | Registers all four coordination ports |
+| `RedisSessionRealtimePresence` | TTL-scoped connection keys |
+| `RedisSimulationTickLeadership` | Distributed lease renewal |
+| `RedisTokenDenylist` | JTI deny with TTL |
+| `RedisRateLimitCounter` | Distributed fixed-window counter |
+| `RedisCoordinationHealthCheck` / `GarnetCoordinationHealthCheck` | Redis ping health check |
+
+## Related
+
+| Package | Role |
+|---------|------|
+| `Novolis.Messaging.Coordination.Abstractions` | Port definitions and options |
+| `Novolis.Messaging.Coordination.InMemory` | Single-process fallback for dev/tests |
