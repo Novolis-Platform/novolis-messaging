@@ -92,6 +92,71 @@ public sealed class PulseFlowDiagnosticsTests
         await Assert.That(handled.Count).IsEqualTo(1);
     }
 
+    [Test]
+    public async Task Unmatched_pulse_without_callback_does_not_throw()
+    {
+        var builder = Host.CreateApplicationBuilder([]);
+        builder.Services.AddPulseFlow<MatchesNothingFlow>();
+        builder.Services.AddHostedService<SingleOrphanSender>();
+
+        var host = builder.Build();
+        await host.StartAsync();
+        try
+        {
+            await Task.Delay(300);
+        }
+        finally
+        {
+            await host.StopAsync();
+        }
+    }
+
+    [Test]
+    public async Task Unmatched_pulse_survives_throwing_callback()
+    {
+        var builder = Host.CreateApplicationBuilder([]);
+        builder.Services.ConfigurePulseFlowDiagnostics(o =>
+        {
+            o.UnmatchedPulse = _ => throw new InvalidOperationException("diagnostics failed");
+        });
+        builder.Services.AddPulseFlow<MatchesNothingFlow>();
+        builder.Services.AddHostedService<SingleOrphanSender>();
+
+        var host = builder.Build();
+        await host.StartAsync();
+        try
+        {
+            await Task.Delay(300);
+        }
+        finally
+        {
+            await host.StopAsync();
+        }
+    }
+
+    [Test]
+    public async Task Flow_fault_survives_throwing_callback()
+    {
+        var builder = Host.CreateApplicationBuilder([]);
+        builder.Services.ConfigurePulseFlowDiagnostics(o =>
+        {
+            o.FlowFault = _ => throw new InvalidOperationException("fault callback failed");
+        });
+        builder.Services.AddPulseFlow<ThrowingFlow>();
+        builder.Services.AddHostedService<SingleFaultPulseSender>();
+
+        var host = builder.Build();
+        await host.StartAsync();
+        try
+        {
+            await Task.Delay(300);
+        }
+        finally
+        {
+            await host.StopAsync();
+        }
+    }
+
     private sealed class OrphanPulse : BasePulse;
 
     private sealed class FaultPulse : BasePulse;

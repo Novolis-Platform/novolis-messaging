@@ -9,6 +9,8 @@
     <PackageReference Include="Novolis.Testing.TestBases" />
     <PackageReference Include="Novolis.Testing.TUnit" />
     <PackageReference Include="ConsoleTableExt" />
+    <PackageReference Include="StackExchange.Redis" />
+    <PackageReference Include="Testcontainers.Redis" />
     <PackageReference Include="TUnit" />
   </ItemGroup>
   <ItemGroup>
