@@ -6,6 +6,7 @@
     <RootNamespace>Novolis.Messaging.Coordination.Redis</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="Novolis.Messaging.Unit" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />

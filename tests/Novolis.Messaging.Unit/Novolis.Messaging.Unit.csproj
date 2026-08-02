@@ -17,5 +17,6 @@
     <ProjectReference Include="../../src/Novolis.Messaging.Abstractions/Novolis.Messaging.Abstractions.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging.Coordination.Abstractions/Novolis.Messaging.Coordination.Abstractions.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging.Coordination.InMemory/Novolis.Messaging.Coordination.InMemory.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.Coordination.Redis/Novolis.Messaging.Coordination.Redis.csproj" />
   </ItemGroup>
 </Project>
