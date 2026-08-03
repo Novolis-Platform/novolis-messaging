@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-messaging">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Messaging
 
 Pulse-based in-process messaging (PulseFlow): pulses are written to a `Channel<IPulse>`, consumed by `PulseNexus` (`BackgroundService`), and dispatched to registered `IFlow` instances.
@@ -77,3 +85,4 @@ Multiple handlers for the same pulse type are supported (`AddPulseFlow<TPulse, T
 ## Support
 
 Pre-release API; flows require matching pulse types or `IncompatibleFlowException` is thrown.
+

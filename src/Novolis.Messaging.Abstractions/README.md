@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-messaging">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Messaging.Abstractions
 
 Typed message envelope and publisher/subscriber contracts (Frank.Messaging migration). Contracts only — no implementations or DI in this package.
@@ -48,3 +56,4 @@ public sealed class PlayerJoinedSubscriber : IMessageSubscriber<PlayerJoined>
 |---------|------|
 | `Novolis.Messaging.Channels` | `Channel<T>` DI + `ChannelMessagePublisher<T>` |
 | `Novolis.Messaging` | PulseFlow in-process messaging (separate model) |
+

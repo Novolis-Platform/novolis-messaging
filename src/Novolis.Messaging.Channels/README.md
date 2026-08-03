@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-messaging">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Messaging.Channels
 
 Registers `System.Threading.Channels.Channel<T>` (plus reader/writer) in dependency injection for producer/consumer patterns.
@@ -70,3 +78,4 @@ Each registration adds singleton `Channel<T>`, `ChannelReader<T>`, and `ChannelW
 ## Support
 
 Pre-release; channel lifetime follows ASP.NET Core hosted service defaults.
+

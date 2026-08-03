@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-messaging">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Messaging.Coordination.Abstractions
 
 Distributed host coordination ports for multi-instance ASP.NET hosts: session presence, simulation tick leadership, JWT denylist, and rate limiting.
@@ -44,3 +52,4 @@ IRateLimitCounter rateLimit;
 |---------|------|
 | `Novolis.Messaging.Coordination.InMemory` | Single-process stubs for dev/tests |
 | `Novolis.Messaging.Coordination.Redis` | Redis/Garnet-backed implementations |
+

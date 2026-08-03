@@ -1,3 +1,11 @@
+<!-- novolis-pkg-brand:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-messaging">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-icon.svg" width="72" alt="Novolis"/>
+  </a>
+</p>
+<!-- novolis-pkg-brand:end -->
+
 # Novolis.Messaging.Coordination.InMemory
 
 In-process coordination for single-process hosts and unit tests. Does not share state across pods or processes.
@@ -45,3 +53,4 @@ var count = await counter.IncrementAsync("login:user123", TimeSpan.FromMinutes(1
 |---------|------|
 | `Novolis.Messaging.Coordination.Abstractions` | Port definitions and `CoordinationHostingOptions` |
 | `Novolis.Messaging.Coordination.Redis` | Production multi-instance coordination |
+
