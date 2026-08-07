@@ -92,7 +92,12 @@ public sealed class RedisCoordinationErrorPathTests
 
         public static async Task<BrokenMultiplexer> CreateAsync()
         {
-            var mux = await ConnectionMultiplexer.ConnectAsync(RedisTestSessionFixture.ConnectionString);
+            // Intentionally connect to a closed port; do not require Docker Redis.
+            var options = ConfigurationOptions.Parse("127.0.0.1:1");
+            options.AbortOnConnectFail = false;
+            options.ConnectTimeout = 200;
+            options.SyncTimeout = 200;
+            var mux = await ConnectionMultiplexer.ConnectAsync(options);
             await mux.DisposeAsync();
             return new BrokenMultiplexer(mux);
         }

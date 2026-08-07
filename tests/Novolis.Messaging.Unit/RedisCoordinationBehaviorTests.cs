@@ -19,6 +19,8 @@ public sealed class RedisCoordinationBehaviorTests
     [Test]
     public async Task RateLimitCounter_increments_and_sets_ttl_on_first_hit()
     {
+        Skip.Unless(RedisTestSessionFixture.IsAvailable, "Redis Testcontainers unavailable");
+
         var counter = new RedisRateLimitCounter(
             RedisTestSessionFixture.Multiplexer,
             Options.Create(DefaultOptions),
@@ -34,6 +36,8 @@ public sealed class RedisCoordinationBehaviorTests
     [Test]
     public async Task TokenDenylist_denies_and_expires()
     {
+        Skip.Unless(RedisTestSessionFixture.IsAvailable, "Redis Testcontainers unavailable");
+
         var denylist = new RedisTokenDenylist(
             RedisTestSessionFixture.Multiplexer,
             Options.Create(DefaultOptions),
@@ -49,6 +53,8 @@ public sealed class RedisCoordinationBehaviorTests
     [Test]
     public async Task SessionPresence_tracks_untracks_and_counts()
     {
+        Skip.Unless(RedisTestSessionFixture.IsAvailable, "Redis Testcontainers unavailable");
+
         var presence = new RedisSessionRealtimePresence(
             RedisTestSessionFixture.Multiplexer,
             Options.Create(DefaultOptions),
@@ -65,6 +71,8 @@ public sealed class RedisCoordinationBehaviorTests
     [Test]
     public async Task TickLeadership_acquires_renews_and_rejects_other_instance()
     {
+        Skip.Unless(RedisTestSessionFixture.IsAvailable, "Redis Testcontainers unavailable");
+
         var leader = new RedisSimulationTickLeadership(
             RedisTestSessionFixture.Multiplexer,
             Options.Create(DefaultOptions),
@@ -89,6 +97,8 @@ public sealed class RedisCoordinationBehaviorTests
     [Test]
     public async Task HealthChecks_report_healthy_when_redis_responds()
     {
+        Skip.Unless(RedisTestSessionFixture.IsAvailable, "Redis Testcontainers unavailable");
+
         var redis = new RedisCoordinationHealthCheck(
             RedisTestSessionFixture.Multiplexer,
             NullLogger<RedisCoordinationHealthCheck>.Instance);
