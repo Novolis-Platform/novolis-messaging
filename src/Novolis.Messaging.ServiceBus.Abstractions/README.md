@@ -16,6 +16,16 @@ Ports for Service Bus send/receive/admin and `ServiceBusClientOptions` (`Azure` 
 dotnet add package Novolis.Messaging.ServiceBus.Abstractions
 ```
 
+## Quick start
+
+```csharp
+using Novolis.Messaging.ServiceBus;
+
+// Register ports via Client (Azure) or Broker.Almost + Client (local):
+// services.AddServiceBusClient(...);
+// Then resolve IServiceBusClient / IServiceBusAdministration.
+```
+
 ## Related
 
 | Package | Role |
