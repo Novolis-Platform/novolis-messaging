@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Novolis.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +27,7 @@ public sealed class PulseFlowDiagnosticsTests
         await host.StartAsync();
         try
         {
-            await Task.Delay(300);
+            await WaitUntilAsync(() => unmatched.Count >= 1);
         }
         finally
         {
@@ -54,7 +55,7 @@ public sealed class PulseFlowDiagnosticsTests
         await host.StartAsync();
         try
         {
-            await Task.Delay(300);
+            await WaitUntilAsync(() => faults.Count >= 1);
         }
         finally
         {
@@ -82,7 +83,7 @@ public sealed class PulseFlowDiagnosticsTests
         await host.StartAsync();
         try
         {
-            await Task.Delay(300);
+            await WaitUntilAsync(() => handled.Count >= 1);
         }
         finally
         {
@@ -103,7 +104,7 @@ public sealed class PulseFlowDiagnosticsTests
         await host.StartAsync();
         try
         {
-            await Task.Delay(300);
+            await Task.Delay(40);
         }
         finally
         {
@@ -126,7 +127,7 @@ public sealed class PulseFlowDiagnosticsTests
         await host.StartAsync();
         try
         {
-            await Task.Delay(300);
+            await Task.Delay(40);
         }
         finally
         {
@@ -149,11 +150,22 @@ public sealed class PulseFlowDiagnosticsTests
         await host.StartAsync();
         try
         {
-            await Task.Delay(300);
+            await Task.Delay(40);
         }
         finally
         {
             await host.StopAsync();
+        }
+    }
+
+    private static async Task WaitUntilAsync(Func<bool> predicate, int timeoutMs = 2000)
+    {
+        var sw = Stopwatch.StartNew();
+        while (sw.ElapsedMilliseconds < timeoutMs)
+        {
+            if (predicate())
+                return;
+            await Task.Delay(15);
         }
     }
 

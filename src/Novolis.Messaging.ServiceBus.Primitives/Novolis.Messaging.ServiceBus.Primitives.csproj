@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Messaging.ServiceBus.Primitives</PackageId>
+    <Description>Service Bus message envelope (IMessage&lt;T&gt; / Message&lt;T&gt;) and settle primitives.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Messaging.ServiceBus</RootNamespace>
+  </PropertyGroup>
+</Project>

@@ -38,6 +38,35 @@
         "src/Novolis.Messaging.Coordination.Redis/**",
         "src/Novolis.Messaging.Coordination.Abstractions/**"
       ]
+    },
+    "Novolis.Messaging.ServiceBus.Primitives": {
+      "project": "src/Novolis.Messaging.ServiceBus.Primitives/Novolis.Messaging.ServiceBus.Primitives.csproj",
+      "paths": ["src/Novolis.Messaging.ServiceBus.Primitives/**", "Novolis.Messaging.slnx"]
+    },
+    "Novolis.Messaging.ServiceBus.Abstractions": {
+      "project": "src/Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj",
+      "paths": [
+        "src/Novolis.Messaging.ServiceBus.Abstractions/**",
+        "src/Novolis.Messaging.ServiceBus.Primitives/**",
+        "Novolis.Messaging.slnx"
+      ]
+    },
+    "Novolis.Messaging.ServiceBus.Client": {
+      "project": "src/Novolis.Messaging.ServiceBus.Client/Novolis.Messaging.ServiceBus.Client.csproj",
+      "paths": [
+        "src/Novolis.Messaging.ServiceBus.Client/**",
+        "src/Novolis.Messaging.ServiceBus.Abstractions/**",
+        "src/Novolis.Messaging.ServiceBus.Primitives/**",
+        "Novolis.Messaging.slnx"
+      ]
+    },
+    "Novolis.Messaging.ServiceBus.Broker.Almost": {
+      "project": "src/Novolis.Messaging.ServiceBus.Broker.Almost/Novolis.Messaging.ServiceBus.Broker.Almost.csproj",
+      "paths": [
+        "src/Novolis.Messaging.ServiceBus.Broker.Almost/**",
+        "src/Novolis.Messaging.ServiceBus.Abstractions/**",
+        "Novolis.Messaging.slnx"
+      ]
     }
   }
 }

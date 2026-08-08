@@ -20,5 +20,9 @@
     <ProjectReference Include="../../src/Novolis.Messaging.Coordination.Abstractions/Novolis.Messaging.Coordination.Abstractions.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging.Coordination.InMemory/Novolis.Messaging.Coordination.InMemory.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging.Coordination.Redis/Novolis.Messaging.Coordination.Redis.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Primitives/Novolis.Messaging.ServiceBus.Primitives.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Client/Novolis.Messaging.ServiceBus.Client.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Broker.Almost/Novolis.Messaging.ServiceBus.Broker.Almost.csproj" />
   </ItemGroup>
 </Project>

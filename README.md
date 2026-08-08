@@ -44,13 +44,17 @@
 | `Novolis.Messaging.Coordination.Abstractions` | `dotnet add package Novolis.Messaging.Coordination.Abstractions` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Coordination.Abstractions/README.md) |
 | `Novolis.Messaging.Coordination.InMemory` | `dotnet add package Novolis.Messaging.Coordination.InMemory` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Coordination.InMemory/README.md) |
 | `Novolis.Messaging.Coordination.Redis` | `dotnet add package Novolis.Messaging.Coordination.Redis` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.Coordination.Redis/README.md) |
+| `Novolis.Messaging.ServiceBus.Primitives` | `dotnet add package Novolis.Messaging.ServiceBus.Primitives` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Primitives/README.md) |
+| `Novolis.Messaging.ServiceBus.Abstractions` | `dotnet add package Novolis.Messaging.ServiceBus.Abstractions` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Abstractions/README.md) |
+| `Novolis.Messaging.ServiceBus.Client` | `dotnet add package Novolis.Messaging.ServiceBus.Client` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Client/README.md) |
+| `Novolis.Messaging.ServiceBus.Broker.Almost` | `dotnet add package Novolis.Messaging.ServiceBus.Broker.Almost` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Broker.Almost/README.md) |
 
 For NuGet.org and Visual Studio, the **embedded** README.md inside each package is authoritative.
 
 <!-- novolis-package-index:end -->
 # Messaging
 
-In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI), **PulseFlow** (`Novolis.Messaging`), typed pub/sub contracts, and multi-instance **coordination** ports (InMemory / Redis).
+In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI), **PulseFlow** (`Novolis.Messaging`), typed pub/sub contracts, multi-instance **coordination** ports (InMemory / Redis), and **Service Bus** (Azure SDK client + Almost broker).
 
 ## Packages
 
@@ -62,6 +66,10 @@ In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI), 
 | `Novolis.Messaging.Coordination.Abstractions` | Presence, tick leadership, JWT denylist, rate limit ports |
 | `Novolis.Messaging.Coordination.InMemory` | Single-process coordination for dev/tests |
 | `Novolis.Messaging.Coordination.Redis` | Redis/Garnet-backed coordination |
+| `Novolis.Messaging.ServiceBus.Primitives` | Service Bus `IMessage&lt;T&gt;` / `Message&lt;T&gt;` (+ `.Advanced`) |
+| `Novolis.Messaging.ServiceBus.Abstractions` | Service Bus client / admin ports |
+| `Novolis.Messaging.ServiceBus.Client` | Azure SDK adapter (cloud + Almost) |
+| `Novolis.Messaging.ServiceBus.Broker.Almost` | AlmostServiceBus in-process broker |
 
 ## Quick start
 

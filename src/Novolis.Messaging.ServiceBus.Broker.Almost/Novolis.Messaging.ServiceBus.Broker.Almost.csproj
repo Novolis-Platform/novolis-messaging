@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Messaging.ServiceBus.Broker.Almost</PackageId>
+    <Description>AlmostServiceBus in-process broker host for local development and tests.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Messaging.ServiceBus.Broker.Almost</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AlmostServiceBus.TestHost" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

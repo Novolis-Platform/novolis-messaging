@@ -26,8 +26,19 @@ public sealed class PulseNexusResilienceTests : HostApplicationTestBase
     [Test]
     public async Task Subsequent_pulses_are_processed_after_a_flow_throws()
     {
-        await Task.Delay(800);
+        await WaitUntilAsync(() => _recorder.Labels.Count >= 2);
         await Assert.That(_recorder.Labels.ToArray()).IsEquivalentTo(["first", "second"]);
+    }
+
+    private static async Task WaitUntilAsync(Func<bool> predicate, int timeoutMs = 2000)
+    {
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        while (sw.ElapsedMilliseconds < timeoutMs)
+        {
+            if (predicate())
+                return;
+            await Task.Delay(15);
+        }
     }
 
     private sealed class LabelPulse : BasePulse

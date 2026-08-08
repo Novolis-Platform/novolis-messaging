@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Messaging.ServiceBus.Client</PackageId>
+    <Description>Azure.Messaging.ServiceBus adapter implementing Novolis Service Bus ports.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Messaging.ServiceBus.Client</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

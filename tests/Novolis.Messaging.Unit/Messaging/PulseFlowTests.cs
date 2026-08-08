@@ -37,7 +37,12 @@ public class PulseFlowTests : HostApplicationTestBase
     [Test]
     public async Task Test1()
     {
-        await Task.Delay(500);
+        await WaitUntilAsync(() =>
+            _container.BlueMessages.Count > 0
+            && _container.RedMessages.Count > 0
+            && _container.TimerPulses.Count > 0
+            && _container.TimerPulses2.Count > 0);
+
         var overview = new[]
         {
             new { Name = "Blue", Count = _container.BlueMessages.Count },
@@ -48,12 +53,21 @@ public class PulseFlowTests : HostApplicationTestBase
 
         TestContext.Current?.WriteTable(overview);
 
-        await Task.Delay(500);
-
         await Assert.That(_container.BlueMessages).IsNotEmpty();
         await Assert.That(_container.RedMessages).IsNotEmpty();
         await Assert.That(_container.TimerPulses).IsNotEmpty();
         await Assert.That(_container.TimerPulses2).IsNotEmpty();
+    }
+
+    private static async Task WaitUntilAsync(Func<bool> predicate, int timeoutMs = 2000)
+    {
+        var sw = Stopwatch.StartNew();
+        while (sw.ElapsedMilliseconds < timeoutMs)
+        {
+            if (predicate())
+                return;
+            await Task.Delay(15);
+        }
     }
 
     private class BlueOutputFlow(TestPulseContainer container) : IFlow

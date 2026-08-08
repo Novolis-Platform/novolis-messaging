@@ -6,8 +6,12 @@
     <Project Path="src/Novolis.Messaging.Coordination.Abstractions/Novolis.Messaging.Coordination.Abstractions.csproj" />
     <Project Path="src/Novolis.Messaging.Coordination.InMemory/Novolis.Messaging.Coordination.InMemory.csproj" />
     <Project Path="src/Novolis.Messaging.Coordination.Redis/Novolis.Messaging.Coordination.Redis.csproj" />
+    <Project Path="src/Novolis.Messaging.ServiceBus.Primitives/Novolis.Messaging.ServiceBus.Primitives.csproj" />
+    <Project Path="src/Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj" />
+    <Project Path="src/Novolis.Messaging.ServiceBus.Client/Novolis.Messaging.ServiceBus.Client.csproj" />
+    <Project Path="src/Novolis.Messaging.ServiceBus.Broker.Almost/Novolis.Messaging.ServiceBus.Broker.Almost.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Novolis.Messaging.Unit/Novolis.Messaging.Unit.csproj" />
-    </Folder>
+  </Folder>
 </Solution>
