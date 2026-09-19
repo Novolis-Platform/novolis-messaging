@@ -105,6 +105,24 @@ public sealed class SecureTextSessionTests
         await Assert.That(() => bob.Open(impostorEnvelope)).Throws<CryptographicException>();
     }
 
+    [Test]
+    public async Task Group_scoped_pair_conversations_are_symmetric_and_isolated()
+    {
+        var alice = SecureTextDeviceId.FromGuid(Guid.CreateVersion7());
+        var bob = SecureTextDeviceId.FromGuid(Guid.CreateVersion7());
+        var firstGroup = SecureTextGroupId.New();
+        var secondGroup = SecureTextGroupId.New();
+
+        var aliceToBob = SecureTextConversationId.DeriveForGroupMember(firstGroup, alice, bob);
+        var bobToAlice = SecureTextConversationId.DeriveForGroupMember(firstGroup, bob, alice);
+        var otherGroup = SecureTextConversationId.DeriveForGroupMember(secondGroup, alice, bob);
+        var direct = SecureTextConversationId.DeriveForPair(alice, bob);
+
+        await Assert.That(aliceToBob).IsEqualTo(bobToAlice);
+        await Assert.That(aliceToBob).IsNotEqualTo(otherGroup);
+        await Assert.That(aliceToBob).IsNotEqualTo(direct);
+    }
+
     private static (SecureTextSession Alice, SecureTextSession Bob) CreatePair()
     {
         var aliceIdentity = SecureTextDeviceIdentity.Create();
