@@ -24,5 +24,6 @@
     <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Client/Novolis.Messaging.ServiceBus.Client.csproj" />
     <ProjectReference Include="../../src/Novolis.Messaging.ServiceBus.Broker.Almost/Novolis.Messaging.ServiceBus.Broker.Almost.csproj" />
+    <ProjectReference Include="../../src/Novolis.Messaging.SecureText/Novolis.Messaging.SecureText.csproj" />
   </ItemGroup>
 </Project>

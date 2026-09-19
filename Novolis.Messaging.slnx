@@ -10,6 +10,7 @@
     <Project Path="src/Novolis.Messaging.ServiceBus.Abstractions/Novolis.Messaging.ServiceBus.Abstractions.csproj" />
     <Project Path="src/Novolis.Messaging.ServiceBus.Client/Novolis.Messaging.ServiceBus.Client.csproj" />
     <Project Path="src/Novolis.Messaging.ServiceBus.Broker.Almost/Novolis.Messaging.ServiceBus.Broker.Almost.csproj" />
+    <Project Path="src/Novolis.Messaging.SecureText/Novolis.Messaging.SecureText.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Novolis.Messaging.Unit/Novolis.Messaging.Unit.csproj" />

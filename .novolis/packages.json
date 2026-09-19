@@ -67,6 +67,14 @@
         "src/Novolis.Messaging.ServiceBus.Abstractions/**",
         "Novolis.Messaging.slnx"
       ]
+    },
+    "Novolis.Messaging.SecureText": {
+      "project": "src/Novolis.Messaging.SecureText/Novolis.Messaging.SecureText.csproj",
+      "paths": [
+        "src/Novolis.Messaging.SecureText/**",
+        "tests/Novolis.Messaging.Unit/SecureTextSessionTests.cs",
+        "Novolis.Messaging.slnx"
+      ]
     }
   }
 }

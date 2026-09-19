@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Messaging.SecureText</PackageId>
+    <Description>Transport-neutral authenticated envelope, replay policy, and sessions for end-to-end secure text.</Description>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Novolis.Security.SecureText" />
+  </ItemGroup>
+</Project>

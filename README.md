@@ -51,6 +51,7 @@
 | `Novolis.Messaging.ServiceBus.Abstractions` | `dotnet add package Novolis.Messaging.ServiceBus.Abstractions` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Abstractions/README.md) |
 | `Novolis.Messaging.ServiceBus.Client` | `dotnet add package Novolis.Messaging.ServiceBus.Client` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Client/README.md) |
 | `Novolis.Messaging.ServiceBus.Broker.Almost` | `dotnet add package Novolis.Messaging.ServiceBus.Broker.Almost` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.ServiceBus.Broker.Almost/README.md) |
+| `Novolis.Messaging.SecureText` | `dotnet add package Novolis.Messaging.SecureText` | [README](https://github.com/Novolis-Platform/novolis-messaging/blob/main/src/Novolis.Messaging.SecureText/README.md) |
 
 For NuGet.org and Visual Studio, the **embedded** README.md inside each package is authoritative.
 
@@ -73,6 +74,7 @@ In-process messaging for .NET: **channels** (`System.Threading.Channels` + DI), 
 | `Novolis.Messaging.ServiceBus.Abstractions` | Service Bus client / admin ports |
 | `Novolis.Messaging.ServiceBus.Client` | Azure SDK adapter (cloud + Almost) |
 | `Novolis.Messaging.ServiceBus.Broker.Almost` | AlmostServiceBus in-process broker |
+| `Novolis.Messaging.SecureText` | Authenticated encrypted text envelopes and replay policy |
 
 ## Quick start
 

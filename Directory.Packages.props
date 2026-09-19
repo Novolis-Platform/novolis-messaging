@@ -23,6 +23,7 @@
     <PackageVersion Include="TUnit" Version="1.44.39" />
     <PackageVersion Include="Novolis.Testing.TestBases" Version="2026.1.*" />
     <PackageVersion Include="Novolis.Testing.TUnit" Version="2026.1.*" />
+    <PackageVersion Include="Novolis.Security.SecureText" Version="2026.1.*" />
     <PackageVersion Include="SSH.NET" Version="2026.0.0" />
   </ItemGroup>
 </Project>
