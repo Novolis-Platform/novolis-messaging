@@ -24,7 +24,7 @@ public static class RedisTestSessionFixture
     {
         try
         {
-            _container = new RedisBuilder().Build();
+            _container = new RedisBuilder("redis:7.4").Build();
             await _container.StartAsync();
             _connectionString = _container.GetConnectionString();
             _multiplexer = await ConnectionMultiplexer.ConnectAsync(_connectionString);
