@@ -4,14 +4,6 @@ using Novolis.Security.SecureText;
 
 namespace Novolis.Messaging.SecureText;
 
-/// <summary>Decrypted text and authenticated envelope metadata delivered to an endpoint.</summary>
-public sealed record SecureTextReceivedText(
-    Guid MessageId,
-    SecureTextConversationId ConversationId,
-    SecureTextDeviceId SenderDeviceId,
-    DateTimeOffset SentAtUtc,
-    string Text);
-
 /// <summary>
 /// Stateful endpoint session for one pinned peer and one conversation. Hosts must persist
 /// <see cref="State"/> after each send or successful receive to preserve replay protection.

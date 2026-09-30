@@ -21,24 +21,3 @@ public static class AlmostServiceBusServiceCollectionExtensions
         return services;
     }
 }
-
-internal sealed class AlmostServiceBusClientOptionsConfigurator(AlmostServiceBusBroker broker)
-    : IConfigureOptions<ServiceBusClientOptions>
-{
-    public void Configure(ServiceBusClientOptions options)
-    {
-        options.Provider = ServiceBusProvider.Almost;
-        if (broker.IsStarted)
-        {
-            options.ConnectionString = broker.ConnectionString;
-            options.PublicPort = broker.PublicPort;
-        }
-    }
-}
-
-internal sealed class AlmostServiceBusBrokerHostedService(AlmostServiceBusBroker broker) : IHostedService
-{
-    public Task StartAsync(CancellationToken cancellationToken) => broker.StartAsync(cancellationToken);
-
-    public Task StopAsync(CancellationToken cancellationToken) => broker.StopAsync();
-}
